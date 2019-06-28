@@ -17,23 +17,38 @@
 
 
 function SubstitutionCipher(abc1, abc2) {
-  function code (first, second, str) {
-    if (typeof str !== 'string') return 'Argument should be a string!';
-    let res = '';
-    for (let i = 0; i < str.length; i++) {
-      const index = first.indexOf(str[i]);
-      if (index !== -1) res += second[index];
-      else res += str[i];
-    }
-    return res;
-  }
-
   this.encode = (str) => {
     return code(abc1, abc2, str);
   };
   this.decode = (str) => {
     return code(abc2, abc1, str);
   };
+
+  function code (first, second, str) {
+    if (typeof str !== 'string') return 'Argument should be a string!';
+    const obj = {};
+    let res = '';
+    for (let i = 0; i < first.length; i++) {
+      obj[first[i]] = second[i];
+    }
+    for (let i = 0; i < str.length; i++) {
+      if (obj.hasOwnProperty(str[i])) {
+          res += obj[str[i]];
+      }
+      else res += str[i];
+    }
+    return res;
+
+
+    // if (typeof str !== 'string') return 'Argument should be a string!';
+    // let res = '';
+    // for (let i = 0; i < str.length; i++) {
+    //   const index = first.indexOf(str[i]);
+    //   if (index !== -1) res += second[index];
+    //   else res += str[i];
+    // }
+    // return res;
+  }
 }
 
 module.exports = SubstitutionCipher;
