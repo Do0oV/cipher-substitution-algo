@@ -17,25 +17,22 @@
 
 
 function SubstitutionCipher(abc1, abc2) {
-  this.encode = (str) => {
+  function code (first, second, str) {
     if (typeof str !== 'string') return 'Argument should be a string!';
     let res = '';
     for (let i = 0; i < str.length; i++) {
-      const index = abc1.indexOf(str[i]);
-      if (index !== -1) res += abc2[index];
+      const index = first.indexOf(str[i]);
+      if (index !== -1) res += second[index];
       else res += str[i];
     }
     return res;
+  }
+
+  this.encode = (str) => {
+    return code(abc1, abc2, str);
   };
   this.decode = (str) => {
-    if (typeof str !== 'string') return 'Argument should be a string!';
-    let res = '';
-    for (let i = 0; i < str.length; i++) {
-      const index = abc2.indexOf(str[i]);
-      if (index !== -1) res += abc1[index];
-      else res += str[i];
-    }
-    return res;
+    return code(abc2, abc1, str);
   };
 }
 
