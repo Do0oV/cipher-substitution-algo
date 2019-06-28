@@ -1,4 +1,4 @@
-# Algo Rithms Challenge // Cake Count
+# Algo Rithms Challenge // cipher-substitution-algo
 
 - [1. Getting started](#1-getting-started)
 - [2. Challenge](#2-challenge)
@@ -7,34 +7,30 @@
   - [2.3. Submitting your solution](#23-submitting-your-solution)
 
 ## 1. Getting started
-  `github.com/Do0oV/`
+  `github.com/Do0oV/cipher-substitution-algo`
 
 Fork this repo and then `git clone` your forked repo to your computer.
 Once you're happy with your solution, `git push` and submit a pull request at
-`github.com/Do0oV/`.
+`github.com/Do0oV/cipher-substitution-algo`.
 
 ## 2. Challenge
 
 Write a simple substitution cipher that replaces one character from an alphabet with a character from an alternate alphabet, where each character's position in an alphabet is mapped to the alternate alphabet for encoding or decoding.
 
-If a character provided is not in the opposing alphabet, simply leave it as be.
+If a character provided is not in the opposing alphabet, simply leave it as it is.
 
 
 ### 2.1. Examples
 
 ```js
 ---------------------------------------------------------------
-var abc1 = "abcdefghijklmnopqrstuvwxyz";
-var abc2 = "etaoinshrdlucmfwypvbgkjqxz";
+const abc1 = "abcdefghijklmnopqrstuvwxyz";
+const abc2 = "kgnalpwtrbzvcujxofydeqsimh";
 
-var sub = new SubstitutionCipher(abc1, abc2);
-sub.encode("abc") // => "eta"
-sub.encode("xyz") // => "qxz"
-sub.encode("aeiou") // => "eirfg"
+const sub = new SubstitutionCipher(abc1, abc2);
 
-sub.decode("eta") // => "abc"
-sub.decode("qxz") // => "xyz"
-sub.decode("eirfg") // => "aeiou"
+sub.encode("abc") // => "kgn"
+sub.decode("kgn") // => "abc"
 ```
 
 ### 2.2. Testing your solution
