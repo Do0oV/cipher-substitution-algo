@@ -16,13 +16,29 @@
 //
 
 
-function SubstitutionCipher(abc1, abc2) {
-  this.encode = (str) => {
-    //...
-
+class SubstitutionCipher {
+  constructor (abc1, abc2) {
+    this.first = abc1.split('');
+    this.second = abc2.split('');
+    this.dict1 = abc1.split('').reduce((acc, letter, id) => {
+      acc[letter] = this.second[id]
+      return acc;
+    }, {})
+    this.dict2 = abc2.split('').reduce((acc, letter, id) => {
+      acc[letter] = this.first[id]
+      return acc;
+    }, {})
   }
-  this.decode = (str) => {
-    //...
+
+
+encode(str) {
+    if (typeof str !== 'string') return 'Argument should be a string!'
+    return str.split('').map(l => this.dict1[l] || l).join('')
+  }
+
+ decode (str) {
+    if (typeof str !== 'string') return 'Argument should be a string!'
+    return str.split('').map(l => this.dict2[l] || l).join('')
   }
 }
 
