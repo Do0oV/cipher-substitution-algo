@@ -1,0 +1,15 @@
+{
+  "name": "cipher-substitution-algo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
