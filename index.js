@@ -18,12 +18,31 @@
 
 function SubstitutionCipher(abc1, abc2) {
   this.encode = (str) => {
-    //...
-
+    if (typeof str !== 'string') return 'Argument should be a string!';
+    let res = '';
+    for (let i = 0; i < str.length; i++) {
+      if (abc1.indexOf(str[i]) === -1) res += str[i];
+      else {
+        for (let j = 0; j < abc1.length; j++) {
+          if (str[i] === abc1[j]) res += abc2[j];
+        }
+      }
+    }
+    return res;
   }
   this.decode = (str) => {
-    //...
-  }
+    if (typeof str !== 'string') return 'Argument should be a string!';
+    let res = '';
+    for (let i = 0; i < str.length; i++) {
+      if (abc1.indexOf(str[i]) === -1) res += str[i];
+      else {
+        for (let j = 0; j < abc2.length; j++) {
+          if (str[i] === abc2[j]) res += abc1[j];
+        }
+      }
+   1}
+    return res;
+  }  
 }
 
 module.exports = SubstitutionCipher;
