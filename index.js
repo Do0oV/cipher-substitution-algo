@@ -18,11 +18,26 @@
 
 function SubstitutionCipher(abc1, abc2) {
   this.encode = (str) => {
-    //...
+    if (typeof str !== 'string') {
+      return 'Argument should be a string!';
+    }
+    else {
+      return str.split('').map((el, i) => {
+        return (/\w/i).test(el) ? abc2[abc1.indexOf(el)] : el; 
+      }).join('');
+    }
+
 
   }
   this.decode = (str) => {
-    //...
+    if (typeof str !== 'string') {
+      return 'Argument should be a string!';
+    }
+    else {
+      return str.split('').map((el, i) => {
+        return (/\w/i).test(el) ? abc1[abc2.indexOf(el)] : el; 
+      }).join('');
+    }
   }
 }
 
