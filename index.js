@@ -17,6 +17,7 @@
 
 
 function SubstitutionCipher(abc1, abc2) {
+
   this.encode = (str) => {
     return code(abc1, abc2, str);
   };
@@ -25,21 +26,20 @@ function SubstitutionCipher(abc1, abc2) {
   };
 
   function code (first, second, str) {
+    // O(n)
     if (typeof str !== 'string') return 'Argument should be a string!';
     const obj = {};
-    let res = '';
     for (let i = 0; i < first.length; i++) {
       obj[first[i]] = second[i];
     }
+    let res = '';
     for (let i = 0; i < str.length; i++) {
-      if (obj.hasOwnProperty(str[i])) {
-          res += obj[str[i]];
-      }
-      else res += str[i];
+      const letter = str[i];
+      res += (obj[letter] || letter);
     }
     return res;
 
-
+    // O(n^2)
     // if (typeof str !== 'string') return 'Argument should be a string!';
     // let res = '';
     // for (let i = 0; i < str.length; i++) {
@@ -50,5 +50,6 @@ function SubstitutionCipher(abc1, abc2) {
     // return res;
   }
 }
+
 
 module.exports = SubstitutionCipher;
