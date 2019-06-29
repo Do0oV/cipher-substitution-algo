@@ -15,13 +15,9 @@ describe('SubstitutionCipher', function() {
 
   it('should encode a string', function() {
     const sub = new SubstitutionCipher(abc1, abc2);
-    for (let i = 0; i < 10000; i++) {
-      sub.encode('abc').should.eql('eta');
-    }
+    sub.encode('abc').should.eql('eta');
     sub.encode('a b c').should.eql('e t a');
-    for (let i = 0; i < 10000; i++) {
-        sub.encode('hello world!iauwhfiawughfiauwhfoauwhfoawufhoawifybaiwufytavwiufybawifuybawofiuawybfiawuyfbaiuyeftbaieufynaieufytbiaueyftbapeifguybaeoigutabepigunawepofiuybaweoufytawneçgifyenwiogutnegoiyaegnwoiuatbgpia').should.eql('hiuuf jfpuo!regjhnrejgshnregjhnfegjhnfejgnhfejrnxterjgnxbekjrgnxtejrngxtejfnrgejxtnrejgxntergxinbterignxmerignxbtregixnbtewirnsgxteifrsgbetiwrsgmejiwfnrgxtejifgnxbejmiçsrnximjrfsgbmisfrxeismjfrgebtswre');
-    }
+    sub.encode('hello world!').should.eql('hiuuf jfpuo!');
     const sub2 = new SubstitutionCipher(abc1, abc3);
     sub2.encode('codeworks rocks!').should.eql('nedjxerqt renqt!');
   });
@@ -30,9 +26,6 @@ describe('SubstitutionCipher', function() {
     const sub = new SubstitutionCipher(abc1, abc2);
     sub.decode('eta').should.eql('abc');
     sub.decode('e t a').should.eql('a b c');
-    for (let i = 0; i < 10000; i++) {
-      sub.decode('hiuuf jfpuo!regjhnrejgshnregjhnfegjhnfejgnhfejrnxterjgnxbekjrgnxtejrngxtejfnrgejxtnrejgxntergxinbterignxmerignxbtregixnbtewirnsgxteifrsgbetiwrsgmejiwfnrgxtejifgnxbejmiçsrnximjrfsgbmisfrxeismjfrgebtswre').should.eql('hello world!iauwhfiawughfiauwhfoauwhfoawufhoawifybaiwufytavwiufybawifuybawofiuawybfiawuyfbaiuyeftbaieufynaieufytbiaueyftbapeifguybaeoigutabepigunawepofiuybaweoufytawneçgifyenwiogutnegoiyaegnwoiuatbgpia');
-    }
     sub.decode('hiuuf jfpuo!').should.eql('hello world!');
     const sub2 = new SubstitutionCipher(abc1, abc3);
     sub2.decode('nedjxerqt renqt!').should.eql('codeworks rocks!');
